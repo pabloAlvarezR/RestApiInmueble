@@ -24,11 +24,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initRecyclerView()
         mostrar()
-
-        val btnAgregar = binding.btnAgregar as FloatingActionButton
-        btnAgregar.setOnClickListener(){
+        val recyclerView = binding.rvInmuebles
+        val btnAgregar = binding.btnAgregar as? FloatingActionButton
+        btnAgregar?.setOnClickListener() {
             anadir()
+            val itemCount = recyclerView.adapter?.itemCount ?: 0
+            recyclerView.smoothScrollToPosition(itemCount)
         }
+
     }
     private fun initRecyclerView(){
         adapter=InmuebleAdapter(imuebles)

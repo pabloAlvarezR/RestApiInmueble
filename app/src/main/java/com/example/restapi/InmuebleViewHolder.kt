@@ -11,9 +11,9 @@ class InmuebleViewHolder(view: View): RecyclerView.ViewHolder(view) {
     private val binding = ItemInmuebleBinding.bind(view)
     fun bind(inmueble: InmuebleResponse, adapter: InmuebleAdapter){
         binding.titulo.text=inmueble.titulo
-        binding.id.text=inmueble.idInmueble.toString()
-        binding.tvPrecio.text=inmueble.precio.toString()
-        binding.tvMetros.text=inmueble.metrosUtiles.toString()
+        binding.tvPrecio.text=inmueble.precio.toString()+" €"
+        binding.tvMetros.text=inmueble.metrosUtiles.toString()+" m2"
+        binding.tvDesc.text=inmueble.descripcion
         binding.borrarButton.setOnClickListener(){
             val inmuebleApiService = InmuebleApi.retrofit.create(InmuebleApi::class.java)
             val idInmueble = inmueble.idInmueble
